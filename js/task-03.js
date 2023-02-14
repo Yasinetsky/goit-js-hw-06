@@ -14,18 +14,21 @@ const images = [
 ];
 
 
-const galery = document.querySelector("ul.gallery")
+const galeryEl = document.querySelector(".gallery")
 
-const imagesColect = images[0]
+const elements = images.map(({url, alt}) => {
 
-const itemEl = document.createElement('li');
+  const itemEl = document.createElement('li');
 
-const imagesEl = document.createElement('img');
-imagesEl.src = imagesColect.url
-imagesEl.alt = imagesColect.alt
+  const imagesEl = document.createElement('img');
+  imagesEl.src = url
+  imagesEl.alt = alt
+  imagesEl.width = 300;
 
-itemEl.insertAdjacentHTML("afterbegin", imagesEl)
-console.log(itemEl)
+  itemEl.insertAdjacentHTML("afterbegin", `<img src="${url}" alt="${alt}" width = "300px" >`);
 
-// galery.append(itemEl)
+  return  itemEl
 
+});
+
+galeryEl.append(...elements)
